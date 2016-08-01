@@ -1,18 +1,24 @@
-name: openstack-compute
+name: openstack-compute-api
 version: 0
-summary: OpenStack Compute Snap
-description: Snap for use on OpenStack Compute hypervisor machines
-confinement: devmode
+summary: OpenStack Compute API
+description: OpenStack Compute API
+confinement: strict
 
 apps:
-  nova-compute:
-    command: usr/bin/nova-compute
+  nova-api-os-compute:
+    command: bin/run.sh nova-api-os-compute
     daemon: simple
     plugs:
+      - network-bind
       - network
-      - system-observe
-      - mount-observe
-      - network-observe
+  nova-manage:
+    command: bin/run.sh nova-manage
+    plugs:
+      - network
+  nova-rootwrap:
+    command: bin/run.sh nova-rootwrap
+    plugs:
+      - network
 
 parts:
   nova:
@@ -20,4 +26,15 @@ parts:
     source: https://github.com/openstack/nova
     source-type: git
     source-branch: stable/mitaka
-    build-packages: [python-dev, libssl-dev, libxml2-dev, libxslt1-dev, pkg-config, libffi-dev, libpq-dev, libmysqlclient-dev, graphviz, libsqlite3-dev]
+    build-packages: [python-dev, libssl-dev, libxml2-dev, libxslt1-dev, pkg-config,
+                     libffi-dev, libpq-dev, libmysqlclient-dev, graphviz, libsqlite3-dev]
+  config:
+    plugin: copy
+    files:
+      ../../../parts/nova/src/etc/nova/api-paste.ini: etc/nova/
+      ../../../parts/nova/src/etc/nova/rootwrap.conf: etc/nova/
+      ../../../parts/nova/src/etc/nova/policy.json: etc/nova/
+      ../../../parts/nova/src/etc/nova/rootwrap.d/*: etc/nova/rootwrap.d/
+      etc/nova-snap.conf: etc/nova/nova-snap.conf
+      templates/*: templates/
+      bin/run.sh: bin/run.sh
