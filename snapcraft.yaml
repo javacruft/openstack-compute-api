@@ -35,6 +35,6 @@ parts:
       ../../../parts/nova/src/etc/nova/rootwrap.conf: etc/nova/
       ../../../parts/nova/src/etc/nova/policy.json: etc/nova/
       ../../../parts/nova/src/etc/nova/rootwrap.d/*: etc/nova/rootwrap.d/
-      etc/nova-snap.conf: etc/nova/nova-snap.conf
+      etc/nova.conf: etc/nova/nova.conf
       templates/*: templates/
       bin/run.sh: bin/run.sh
