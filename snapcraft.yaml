@@ -22,11 +22,11 @@ apps:
 
 parts:
   nova:
-    plugin: python2
+    plugin: python3
     source: https://github.com/openstack/nova
     source-type: git
     source-branch: stable/mitaka
-    build-packages: [python-dev, libssl-dev, libxml2-dev, libxslt1-dev, pkg-config,
+    build-packages: [python3-dev, libssl-dev, libxml2-dev, libxslt1-dev, pkg-config,
                      libffi-dev, libpq-dev, libmysqlclient-dev, graphviz, libsqlite3-dev]
   config:
     plugin: copy
