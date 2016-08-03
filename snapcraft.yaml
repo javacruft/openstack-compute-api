@@ -23,9 +23,8 @@ apps:
 parts:
   nova:
     plugin: python3
-    source: https://github.com/openstack/nova
-    source-type: git
-    source-branch: stable/mitaka
+    source: http://tarballs.openstack.org/nova/nova-stable-mitaka.tar.gz
+    constraints: https://raw.githubusercontent.com/openstack/requirements/stable/mitaka/upper-constraints.txt
     build-packages: [python3-dev, libssl-dev, libxml2-dev, libxslt1-dev, pkg-config,
                      libffi-dev, libpq-dev, libmysqlclient-dev, graphviz, libsqlite3-dev]
   config:
