@@ -2,7 +2,7 @@ name: openstack-compute-api
 version: 0
 summary: OpenStack Compute API
 description: OpenStack Compute API
-confinement: strict
+confinement: devmode
 
 apps:
   nova-api-os-compute:

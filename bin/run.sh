@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
 if [ $(id -u) -eq 0 ]; then
     mkdir -p $SNAP_COMMON/nova.conf.d
