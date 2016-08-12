@@ -1,7 +1,7 @@
 name: openstack-compute-controller
 version: 0
-summary: OpenStack Compute Controller
-description: OpenStack Compute API
+summary: OpenStack Compute (Nova) Controller
+description: OpenStack Compute (Nova) Controller
 confinement: strict
 
 apps:
