@@ -1,8 +1,8 @@
-name: openstack-compute-api
+name: openstack-compute-controller
 version: 0
-summary: OpenStack Compute API
+summary: OpenStack Compute Controller
 description: OpenStack Compute API
-confinement: devmode
+confinement: strict
 
 apps:
   nova-api-os-compute:
@@ -11,14 +11,21 @@ apps:
     plugs:
       - network-bind
       - network
+  nova-conductor:
+    command: bin/run.sh nova-conductor
+    daemon: simple
+    plugs:
+      - network
+  nova-scheduler:
+    command: bin/run.sh nova-scheduler
+    daemon: simple
+    plugs:
+      - network
   nova-manage:
     command: bin/run.sh nova-manage
     plugs:
       - network
-  nova-rootwrap:
-    command: bin/run.sh nova-rootwrap
-    plugs:
-      - network
+      - network-bind
 
 parts:
   nova:
