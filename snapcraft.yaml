@@ -5,8 +5,8 @@ description: OpenStack Compute API
 confinement: strict
 
 apps:
-  nova-api-os-compute:
-    command: bin/run.sh nova-api-os-compute
+  nova-api:
+    command: bin/run.sh nova-api
     daemon: simple
     plugs:
       - network-bind
@@ -21,6 +21,17 @@ apps:
     daemon: simple
     plugs:
       - network
+  nova-consoleauth:
+    command: bin/run.sh nova-consoleauth
+    daemon: simple
+    plugs:
+      - network
+  nova-spicehtml5proxy:
+    command: bin/run.sh nova-spicehtml5proxy
+    daemon: simple
+    plugs:
+      - network
+      - network-bind
   nova-manage:
     command: bin/run.sh nova-manage
     plugs:
