@@ -31,6 +31,7 @@ parts:
   nova:
     plugin: python3
     source: http://tarballs.openstack.org/nova/nova-stable-mitaka.tar.gz
+    python-packages: [pymysql]
     constraints: https://raw.githubusercontent.com/openstack/requirements/stable/mitaka/upper-constraints.txt
     build-packages: [python3-dev, libssl-dev, libxml2-dev, libxslt1-dev, pkg-config,
                      libffi-dev, libpq-dev, libmysqlclient-dev, graphviz, libsqlite3-dev]
